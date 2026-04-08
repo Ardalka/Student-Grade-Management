@@ -6,7 +6,7 @@ def add_course():
     course = entry.get()
 
     if course != "":
-        courses.append(course)
+        add_course(course_code, course_name)
         listbox.insert(tk.END, course)
         entry.delete(0, tk.END)
 
@@ -14,9 +14,9 @@ def remove_course():
     selected = listbox.curselection()
 
     if selected:
-        index = selected[0]
+        course_name = listbox.get(index)
+        remove_course(course_code)
         listbox.delete(index)
-        courses.pop(index)
 
 root = tk.Tk()
 root.title("Course Management")
