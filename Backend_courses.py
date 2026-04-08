@@ -4,7 +4,14 @@ def add_course(course_code, course_name):
     """Adds a new course to the database."""
     connection = sqlite3.connect("student_management.db")
     cursor = connection.cursor()
-    
+
+    cursor.execute('''
+CREATE TABLE IF NOT EXISTS courses (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    course_code TEXT UNIQUE NOT NULL,
+    course_name TEXT NOT NULL
+)
+''')
     try:
         cursor.execute('''
             INSERT INTO courses (course_code, course_name)
