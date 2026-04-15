@@ -23,7 +23,6 @@ def enroll_student(student_id, course_code):
         print(f"Success: Student {student_id} has been enrolled in {course_code}.")
         
     except sqlite3.IntegrityError:
-        # Prevents enrolling the same student to the same course twice
         print(f"Error: Student {student_id} is already enrolled in {course_code}.")
         
     finally:
@@ -35,7 +34,6 @@ def update_grade(student_id, course_code, grade):
     connection = sqlite3.connect("student_management.db")
     cursor = connection.cursor()
     
-    # Check if enrollment exists
     cursor.execute('''
         SELECT * FROM grades WHERE student_id = ? AND course_code = ?
     ''', (student_id, course_code))
@@ -43,7 +41,6 @@ def update_grade(student_id, course_code, grade):
     if cursor.fetchone() is None:
         print(f"Error: Student {student_id} is not enrolled in {course_code}. Enroll them first.")
     else:
-        # Update the grade
         cursor.execute('''
             UPDATE grades SET grade_value = ? 
             WHERE student_id = ? AND course_code = ?
