@@ -1,7 +1,10 @@
 def grades_to_gpa(avg_score: float):
 
+    if not isinstance(avg_score, (int, float)):
+        raise TypeError("raiserror: invalid type")
+
     if avg_score < 0 or avg_score > 100:
-        return None
+        raise ValueError("raiserror: invalid score range")
 
     if avg_score < 50:
         return 0.0
