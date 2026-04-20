@@ -40,8 +40,8 @@ def remove_student(student_id):
         
     connection.close()
 # --- TESTING THE FUNCTIONS ---
-add_student("Arda", "Ilktug", "2025001")
-add_student("Paa Kofi", "Nyarkoh", "2025002")
+#add_student("Arda", "Ilktug", "2025001")
+#add_student("Paa Kofi", "Nyarkoh", "2025002")
 
 # --- TESTING THE REMOVE FUNCTION ---
 # remove_student("2025001")
