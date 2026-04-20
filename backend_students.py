@@ -24,21 +24,21 @@ def add_student(first_name, last_name, student_id):
 # This function removes a student from the database using their student_id
 def remove_student(student_id):
     """Removes a student from the database using their student_id."""
+    if student_id is None:
+        print("Error: Invalid input type.")
+        return
+    student_id = str(student_id).strip() 
     connection = sqlite3.connect("student_management.db")
     cursor = connection.cursor()
-    
-    # First, check if the student exists
     cursor.execute("SELECT * FROM students WHERE student_id = ?", (student_id,))
     if cursor.fetchone() is None:
         print(f"Error: Student with ID {student_id} not found.")
     else:
-        # DELETE operation to remove data
         cursor.execute("DELETE FROM students WHERE student_id = ?", (student_id,))
         connection.commit()
         print(f"Success: Student with ID {student_id} has been removed.")
         
     connection.close()
-
 # --- TESTING THE FUNCTIONS ---
 add_student("Arda", "Ilktug", "2025001")
 add_student("Paa Kofi", "Nyarkoh", "2025002")

@@ -1,5 +1,4 @@
 import sqlite3
-
 # 1. Connect to the database (creates the file if it doesn't exist)
 connection = sqlite3.connect("student_management.db")
 
@@ -15,8 +14,21 @@ CREATE TABLE IF NOT EXISTS students (
     student_id TEXT UNIQUE NOT NULL
 )
 ''')
-# 4. Commit the changes and close the connection
+
+# 5. Create the grades table
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS grades (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        student_id TEXT NOT NULL,
+        course_code TEXT NOT NULL,
+        grade_value REAL,
+        FOREIGN KEY (student_id) REFERENCES students (student_id),
+        FOREIGN KEY (course_code) REFERENCES courses (course_code),
+        UNIQUE(student_id, course_code) -- Bir öğrencinin bir derste tek bir notu olur
+    )
+    ''')
+# 6. Commit the changes and close the connection
 connection.commit()
 connection.close()
 
-print("Success: Database and 'students' table created successfully!")
+print("Success: Database and tables created successfully!")
