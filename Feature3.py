@@ -10,7 +10,7 @@ grades = {
     ("Bob", "Math"): 72,
     ("Charlie", "English"): 88
 }
-
+tk.Button(root, text="Save to File", command=lambda: save_to_file(tree)).pack()
 # ---------------------------
 # Function: Load table data
 # ---------------------------
