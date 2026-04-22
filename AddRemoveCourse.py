@@ -15,9 +15,9 @@ def remove_course():
     selected = listbox.curselection()
 
     if selected:
-        course_name = listbox.get(index)
-        remove_course(course_code)
+        index = selected[0]
         listbox.delete(index)
+
 
 root = tk.Tk()
 root.title("Course Management")
