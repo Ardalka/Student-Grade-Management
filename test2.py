@@ -1,4 +1,4 @@
-import unittest
+mport unittest
 from Task6.1.py import rank_students_by_average
 
 class TestRankStudents(unittest.TestCase):
