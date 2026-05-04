@@ -2,7 +2,7 @@ import unittest
 from unittest.mock import patch
 import tkinter as tk
 
-import Feature3 as app  
+import feature3 as app  
 
 
 class TestGradeManager(unittest.TestCase):
