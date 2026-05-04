@@ -3,7 +3,7 @@ from unittest.mock import MagicMock
 import tkinter as tk
 from tkinter import ttk
 
-import Feature2 as app  
+import feature2 as app  
 
 
 class TestLoadTable(unittest.TestCase):
