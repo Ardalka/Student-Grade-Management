@@ -1,4 +1,4 @@
-name: Run Unit Tests
+name: Run Unit Tests (Tkinter Safe)
 
 on:
   push:
@@ -21,10 +21,14 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install dependencies
+      - name: Install dependencies (optional)
         run: |
           pip install -r requirements.txt || true
 
-      - name: Run unittest (tests in same folder as code)
+      - name: Install xvfb for Tkinter GUI tests
+        run: sudo apt-get install -y xvfb
+
+      - name: Run unittest with virtual display
         run: |
-          python -m unittest discover -s . -p "*test*.py"
+          xvfb-run -a python -m unittest discover -s . -p "*test*.py"
+
