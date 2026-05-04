@@ -3,7 +3,7 @@ from unittest.mock import MagicMock, patch
 import tkinter as tk
 
 # Import your module
-import Task1.2.py as app  
+import task1_2 as app  
 
 
 class TestStudentManager(unittest.TestCase):
