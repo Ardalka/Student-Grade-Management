@@ -18,4 +18,4 @@ jobs:
           python-version: '3.9'
 
       - name: Run my tests
-        run: python -m unittest test_file.py
+        run: python -m unittest test_gpa.py
