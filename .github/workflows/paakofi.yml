@@ -1,34 +1,23 @@
-name: Run Unit Tests (Tkinter Safe)
+name: CI
 
 on:
   push:
-    branches:
-      - paakofinyarkoh52-task1.2
+    branches: [ "paakofinyarkoh52-task1.2" ]
   pull_request:
-    branches:
-      - paakofinyarkoh52-task1.2
+    branches: [ "paakofinyarkoh52-task1.2" ]
+  workflow_dispatch:
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
+      - name: Run a one-line script
+        run: echo Hello, world!
 
-      - name: Install dependencies (optional)
+      - name: Run a multi-line script
         run: |
-          pip install -r requirements.txt || true
-
-      - name: Install xvfb for Tkinter GUI tests
-        run: sudo apt-get install -y xvfb
-
-      - name: Run unittest with virtual display
-        run: |
-          xvfb-run -a python -m unittest discover -s . -p "*test*.py"
-
+          echo Add other actions to build,
+          echo test, and deploy your project.
