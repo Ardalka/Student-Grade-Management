@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-from backend_students import add_course, remove_course 
+from backend_courses import add_course, remove_course 
 courses = []
 
 def add_course():
